@@ -163,7 +163,7 @@ buttons {
  */
 
 #footer {
-  background-color: #0288D1;
+  background-color: #3f51b5;
   color: #fff;
 }
 
@@ -190,4 +190,32 @@ buttons {
 
 .no-deciration {
 	text-decoration: none !important;
+}
+
+.content-header {
+	background-image: url(/static/img/brand.jpg);
+	background-color: #3f51b5;
+	color: #fff;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	margin-bottom: -48px;
+	padding-top: 68px;
+	padding-bottom: 48px;
+}
+.content-header-title {
+	margin-top: 48px;
+	margin-bottom: 30px;
+	font-weight: 300;
+}
+.header-color {
+	transition: background-color 1s!important;
+	background-color: #3f51b5;
+}
+.header-nocolor {
+	transition: background-color 1s!important;
+	background-color: transparent;
+}
+.mui-appbar{
+	background-color: transparent;
 }

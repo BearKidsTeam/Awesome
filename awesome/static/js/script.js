@@ -47,4 +47,22 @@ jQuery(function($) {
   $titleEls.on('click', function() {
     $(this).next().slideToggle(200);
   });
+  
+// ==========================================================================
+// Header Nav Fix
+// ==========================================================================
+
+$(window.document).scroll(function () {
+	var scroll_top = $(document).scrollTop(); 
+	if (scroll_top == 0) {
+		$("#header").addClass("header-nocolor");
+		$("#header").removeClass("header-color");
+	} else {
+		$("#header").removeClass("header-nocolor");
+		$("#header").addClass("header-color");
+	}
 });
+  
+});
+
+
