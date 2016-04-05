@@ -1,0 +1,17 @@
+{% extends 'awesome/base.html' %}
+
+{% block content %}
+	<div class="content-header" >
+		<div class="mui-container">
+			<h1 class="content-header-title"> {{ thread.title }} </h1>
+		</div>
+	</div>
+	<div class="mui-container">
+		
+		
+			<div class="mui-panel">
+				 {{ thread.html|safe|linebreaks }}
+			</div>
+		
+	</div>
+{% endblock content %}
