@@ -11,7 +11,7 @@
 		{% for thread in threads %}
 			<div class="mui-panel">
 				<h1><a class="no-deciration" href="{% url 'thread_detail' pk=thread.pk %}">{{ thread.title }}</a></h1>
-				{{ thread.plainText|safe|linebreaks }}
+				{{ thread.previewText|safe|linebreaks }}
 			</div>
 		{% endfor %}
 	</div>

@@ -173,11 +173,15 @@ buttons {
 }
 
 /**
- * Container Fix, Appbar Fix
+ * Container Fix, Card Fix, Appbar Fix
  */
  
 .mui-container {
     max-width: 960px;
+}
+
+.mui-panel {
+	padding: 15px 56px;
 }
 
 .mui-appbar .mui--text-title, #sidedrawer-brand > a {
@@ -218,4 +222,9 @@ buttons {
 }
 .mui-appbar{
 	background-color: transparent;
+}
+
+ol, ul {
+	margin-bottom: 0;
+	line-height: 1.2;
 }

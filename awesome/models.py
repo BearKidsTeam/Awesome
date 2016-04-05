@@ -25,5 +25,8 @@ class Post(models.Model):
 	def plainText(self):
 		return ''.join(BeautifulSoup(self.html()).findAll(text=True))
 
+	def previewText(self):
+		return ''.join(BeautifulSoup(self.html()).findAll(text=True))[0:100]
+
 	def __str__(self):
 		return self.title
