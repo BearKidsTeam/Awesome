@@ -181,7 +181,7 @@ buttons {
 }
 
 .mui-panel {
-	padding: 15px 56px;
+	padding: 20px 56px;
 }
 
 .mui-appbar .mui--text-title, #sidedrawer-brand > a {
@@ -222,6 +222,10 @@ buttons {
 }
 .mui-appbar{
 	background-color: transparent;
+}
+
+.mui-panel h1 {
+	margin-top: 10px;
 }
 
 ol, ul {

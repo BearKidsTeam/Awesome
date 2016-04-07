@@ -7,8 +7,10 @@ from .models import Post
 
 def thread_list(request):
 	threads = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-	return render(request, 'awesome/thread_list.html', {'threads': threads})
+	page = {'basenav': 'Awesome', 'subnav': 'Recommand List'} 
+	return render(request, 'awesome/thread_list.html', {'threads': threads, 'page':page})
 
 def thread_detail(request, pk):
 	thread = get_object_or_404(Post, pk=pk)
-	return render(request, 'awesome/thread_detail.html', {'thread': thread})
+	page = {'basenav': 'Awesome', 'subnav': 'Read List'} 
+	return render(request, 'awesome/thread_detail.html', {'thread': thread, 'page':page})

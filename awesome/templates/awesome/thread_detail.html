@@ -1,5 +1,9 @@
 {% extends 'awesome/base.html' %}
 
+{% block title %}
+	{{ thread.title }}
+{% endblock %}
+
 {% block content %}
 	<div class="content-header" >
 		<div class="mui-container">
@@ -10,7 +14,8 @@
 		
 		
 			<div class="mui-panel">
-				 {{ thread.html|safe|linebreaks }}
+				<div class="mui--text-dark-hint">{{ thread.created_date|date:"D, P, M d Y" }}</div>
+				{{ thread.html|safe|linebreaks }}
 			</div>
 		
 	</div>

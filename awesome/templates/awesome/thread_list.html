@@ -1,9 +1,13 @@
 {% extends 'awesome/base.html' %}
 
+{% block title %}
+	Recommand List
+{% endblock %}
+
 {% block content %}
 	<div class="content-header" >
 		<div class="mui-container">
-			<h1 class="content-header-title">Something Awesome</h1>
+			<h1 class="content-header-title">Recommand List</h1>
 		</div>
 	</div>
 	<div class="mui-container">
@@ -11,7 +15,7 @@
 		{% for thread in threads %}
 			<div class="mui-panel">
 				<h1><a class="no-deciration" href="{% url 'thread_detail' pk=thread.pk %}">{{ thread.title }}</a></h1>
-				{{ thread.previewText|safe|linebreaks }}
+				{{ thread.plainText|linebreaks|truncatewords:"100" }}
 			</div>
 		{% endfor %}
 	</div>

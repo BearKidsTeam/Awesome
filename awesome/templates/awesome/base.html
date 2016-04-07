@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Awesome</title>
+	<title>{% block title %}{% endblock %}</title>
 	<link rel="stylesheet" href="{% static 'css/mui.min.css' %}">
 	<link rel="stylesheet" href="{% static 'css/style.css' %}">
 	<script src="{% static 'js/mui.min.js' %}"></script>
@@ -20,23 +20,13 @@
       <div class="mui-divider"></div>
       <ul>
         <li>
-          <strong>Category 1</strong>
-          <ul>
-            <li><a href="#">Item 1</a></li>
-            <li><a href="#">Item 2</a></li>
-            <li><a href="#">Item 3</a></li>
-          </ul>
+          <strong><a class="no-deciration" href="{% url 'thread_list' %}">Recommand List</a></strong>
         </li>
         <li>
-          <strong>Category 2</strong>
-          <ul>
-            <li><a href="#">Item 1</a></li>
-            <li><a href="#">Item 2</a></li>
-            <li><a href="#">Item 3</a></li>
-          </ul>
+          <strong>Explorer</strong>
         </li>
         <li>
-          <strong>Category 3</strong>
+          <strong>Category</strong>
           <ul>
             <li><a href="#">Item 1</a></li>
             <li><a href="#">Item 2</a></li>
@@ -50,8 +40,8 @@
         <div class="mui-container">
           <a class="sidedrawer-toggle mui--visible-xs-inline-block mui--visible-sm-inline-block js-show-sidedrawer">☰</a>
           <a class="sidedrawer-toggle mui--hidden-xs mui--hidden-sm js-hide-sidedrawer">☰</a>
-          <a class="mui--text-title mui--text-light">Awesome</a> <span class="mui--text-title">﹥</span> 
-		  <a class="mui--text-title mui--text-light">Awesome</a>
+          <a href="{% url 'thread_list' %}" class="mui--text-title mui--text-light">Awesome</a> <span class="mui--text-title">﹥</span> 
+          <a class="mui--text-title mui--text-light">{{ page.subnav|default:"Awesome" }}</a>
         </div>
       </div>
     </header>
