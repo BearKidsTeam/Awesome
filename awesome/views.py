@@ -8,12 +8,10 @@ from .models import Post
 
 def thread_list(request):
 	threads = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-	# page = {'basenav': 'Awesome', 'subnav': 'Recommand List'} 
 	page = [{'title': 'Awesome', 'url': '#'}, {'title': 'Recommand List', 'url': reverse('thread_list')}]
 	return render(request, 'awesome/thread_list.html', {'threads': threads, 'page':page})
 
 def thread_detail(request, pk):
-	thread = get_object_or_404(Post, pk=pk)
-	# page = {'basenav': 'Awesome', 'subnav': 'Read List'} 
+	thread = get_object_or_404(Post, pk=pk) 
 	page = [{'title': 'Awesome', 'url': '#'}, {'title': 'Recommand List', 'url': reverse('thread_list')}, {'title': 'Detail', 'url': '#'}]
 	return render(request, 'awesome/thread_detail.html', {'thread': thread, 'page':page})

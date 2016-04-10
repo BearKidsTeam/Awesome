@@ -233,6 +233,10 @@ ol, ul {
 	line-height: 1.2;
 }
 
+/*
+  Appbar Navigiation Title Css
+*/
+
 ul.appbar-nav {
 	padding: 16px 0px;
 }
@@ -244,10 +248,6 @@ ul.appbar-nav {
 	float: left;
 	list-style: none;
 }
-
-/*
-  Appbar Navigiation Title Css
-*/
 
 .appbar-nav {
 	margin: 0;
