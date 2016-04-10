@@ -232,3 +232,44 @@ ol, ul {
 	margin-bottom: 0;
 	line-height: 1.2;
 }
+
+ul.appbar-nav {
+	padding: 16px 0px;
+}
+
+.appbar-nav>li {
+	margin-left: 0px;
+  position: relative;
+  display: block;
+	float: left;
+	list-style: none;
+}
+
+/*
+  Appbar Navigiation Title Css
+*/
+
+.appbar-nav {
+	margin: 0;
+	height: 64px;
+}
+
+.appbar-nav>.nav-title+.nav-title:before {
+	content: "﹥";
+	padding: 0 5px;
+}
+
+.nav-title-right {
+	float: right !important;
+	padding-left: 10px;
+}
+
+.nav-title-link {
+	color: #FFF;
+	text-decoration: none !important;
+}
+
+.nav-title-link:hover {
+	color: #DDD;
+	text-decoration: none !important;
+}

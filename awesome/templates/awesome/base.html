@@ -38,10 +38,20 @@
     <header id="header">
       <div class="mui-appbar mui--appbar-line-height">
         <div class="mui-container">
+          
+          <ul class="appbar-nav">
+              <li class="mui--text-title mui--text-light"><a class="sidedrawer-toggle mui--visible-xs-inline-block mui--visible-sm-inline-block js-show-sidedrawer">☰</a></li>
+              <li class="mui--text-title mui--text-light"><a class="sidedrawer-toggle mui--hidden-xs mui--hidden-sm js-hide-sidedrawer">☰</a></li>
+              {% for navitem in page %}
+              <li class="nav-title mui--text-title"><a class="nav-title-link" href="{{ navitem.url }}">{{ navitem.title }}</a></li>
+              {% endfor %}
+          </ul>
+          <!--
           <a class="sidedrawer-toggle mui--visible-xs-inline-block mui--visible-sm-inline-block js-show-sidedrawer">☰</a>
           <a class="sidedrawer-toggle mui--hidden-xs mui--hidden-sm js-hide-sidedrawer">☰</a>
           <a href="{% url 'thread_list' %}" class="mui--text-title mui--text-light">Awesome</a> <span class="mui--text-title">﹥</span> 
           <a class="mui--text-title mui--text-light">{{ page.subnav|default:"Awesome" }}</a>
+          -->
         </div>
       </div>
     </header>
