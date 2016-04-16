@@ -23,7 +23,7 @@ class Post(models.Model):
 		return markdown(self.text)
 
 	def plainText(self):
-		return ''.join(BeautifulSoup(self.html()).findAll(text=True))
+		return ''.join(BeautifulSoup(self.html(), "html.parser").findAll(text=True))
 
 	def __str__(self):
 		return self.title
@@ -39,6 +39,7 @@ class Application(models.Model):
 		('1', 'Software'),
 	)
 	app_type = models.CharField(max_length=1, choices=APP_TYPE_CHOICES)
+	# Category
 	name = models.CharField(max_length=200)
 	tags = models.ManyToManyField(Tag)
 	steam_appid = models.IntegerField()
@@ -46,6 +47,7 @@ class Application(models.Model):
 	header_img = models.CharField(max_length=200)
 	# header_img_upload = models.ImageField(upload_to='app_header_img', blank=True, null=True)
 	website = models.CharField(max_length=200)
+	desc = models.TextField()
 
 	def __str__(self):
 		return self.name
