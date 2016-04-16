@@ -27,3 +27,25 @@ class Post(models.Model):
 
 	def __str__(self):
 		return self.title
+
+class Tag(models.Model):
+	name = models.CharField(max_length=100)
+	def __str__(self):
+		return self.name
+
+class Application(models.Model):
+	APP_TYPE_CHOICES = (
+		('0', 'Game'),
+		('1', 'Software'),
+	)
+	app_type = models.CharField(max_length=1, choices=APP_TYPE_CHOICES)
+	name = models.CharField(max_length=200)
+	tags = models.ManyToManyField(Tag)
+	steam_appid = models.IntegerField()
+	is_free = models.NullBooleanField()
+	header_img = models.CharField(max_length=200)
+	# header_img_upload = models.ImageField(upload_to='app_header_img', blank=True, null=True)
+	website = models.CharField(max_length=200)
+
+	def __str__(self):
+		return self.name
