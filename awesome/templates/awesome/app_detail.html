@@ -1,0 +1,27 @@
+{% extends 'awesome/base.html' %}
+
+{% block title %}
+	{{ app.name }}
+{% endblock %}
+
+{% block content %}
+	<div class="content-header" >
+		<div class="mui-container">
+			<h1 class="content-header-title"> {{ app.name }} </h1>
+		</div>
+	</div>
+	<div class="mui-container">
+		
+		<div class="mui-panel">
+			<div class="mui--text-dark-hint">	
+				Tags: 				
+				{% for tag in app.tags.all %}
+						#{{ tag }}
+						{% if not forloop.last %},{% endif %}
+				{% endfor %}
+			</div>
+			{{ app.desc|safe|linebreaks }}
+		</div>
+		
+	</div>
+{% endblock content %}

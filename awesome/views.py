@@ -20,3 +20,8 @@ def app_list(request):
 	apps = Application.objects.filter().order_by('name')
 	page = [{'title': 'Awesome', 'url': reverse('home_page')}, {'title': 'Applications', 'url': reverse('app_list')}]
 	return render(request, 'awesome/app_list.html', {'apps': apps, 'page':page})
+	
+def app_detail(request, pk):
+	app = get_object_or_404(Application, pk=pk) 
+	page = [{'title': 'Awesome', 'url': reverse('home_page')}, {'title': 'Applications', 'url': reverse('app_list')}, {'title': 'Detail', 'url': '#'}]
+	return render(request, 'awesome/app_detail.html', {'app': app, 'page':page})
