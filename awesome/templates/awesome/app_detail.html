@@ -5,7 +5,12 @@
 {% endblock %}
 
 {% block content %}
-	<div class="content-header" >
+	<div 
+		class="content-header" 
+		{% if app.header_img %}
+		style="background-image: url({{ app.header_img }});"
+		{% endif %}
+	>
 		<div class="mui-container">
 			<h1 class="content-header-title"> {{ app.name }} </h1>
 		</div>
@@ -14,12 +19,36 @@
 		
 		<div class="mui-panel">
 			<div class="mui--text-dark-hint">	
-				Tags: 				
-				{% for tag in app.tags.all %}
-						#{{ tag }}
-						{% if not forloop.last %},{% endif %}
-				{% endfor %}
+
 			</div>
+			
+			<table class="mui-table mui-table--bordered">
+			<thead>
+				<tr><th>{{ app.name }}</th><th>{{ app.app_type }}</th></tr>
+			</thead>
+			<tbody>
+				{% if app.published_date %}
+					<tr><td>Published Date</td><td>{{ app.published_date|date:"M d, Y" }}</td></tr>
+				{% endif %}
+				{% if app.tags %}
+					<tr><td>Tags</td><td>				
+						{% for tag in app.tags.all %}
+							<a href="{% url 'tag_id' pk=tag.pk %}">#{{ tag }}</a>
+							{% if not forloop.last %},{% endif %}
+						{% endfor %}
+					</td></tr>
+				{% endif %}
+				{% if app.website %}
+					<tr><td>Website</td><td>{{ app.website }}</td></tr>
+				{% endif %}
+			</tbody>
+			</table>
+			
+			{% if app.steam_appid %}
+			<iframe src="http://store.steampowered.com/widget/{{ app.steam_appid }}/" frameborder="0" width="100%" height="190"></iframe>
+			{% endif %}
+
+			
 			{{ app.desc|safe|linebreaks }}
 		</div>
 		

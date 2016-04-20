@@ -54,7 +54,7 @@ jQuery(function($) {
 
 $(window.document).scroll(function () {
 	var scroll_top = $(document).scrollTop(); 
-	if (scroll_top == 0) {
+	if (scroll_top <= 80) {
 		$("#header").addClass("header-nocolor");
 		$("#header").removeClass("header-color");
 	} else {

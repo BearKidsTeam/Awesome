@@ -30,6 +30,7 @@ class Post(models.Model):
 
 class Tag(models.Model):
 	name = models.CharField(max_length=100)
+	desc = models.TextField()
 	def __str__(self):
 		return self.name
 
@@ -39,6 +40,8 @@ class Application(models.Model):
 		('1', 'Software'),
 	)
 	app_type = models.CharField(max_length=1, choices=APP_TYPE_CHOICES)
+	published_date = models.DateTimeField(
+			blank=True, null=True)
 	# Category
 	name = models.CharField(max_length=200)
 	tags = models.ManyToManyField(Tag)

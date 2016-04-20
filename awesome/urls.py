@@ -7,4 +7,5 @@ urlpatterns = [
 	url(r'^app/list/$', views.app_list, name='app_list'),
 	url(r'^thread/(?P<pk>[0-9]+)/$', views.thread_detail, name='thread_detail'),
 	url(r'^app/(?P<pk>[0-9]+)/$', views.app_detail, name='app_detail'),
+	url(r'^tag/(?P<pk>[0-9]+)/$', views.tag_id, name='tag_id'),
 ]
