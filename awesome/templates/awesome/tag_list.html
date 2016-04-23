@@ -1,0 +1,24 @@
+{% extends 'awesome/base.html' %}
+
+{% block title %}
+	Tag List
+{% endblock %}
+
+{% block content %}
+	<div class="content-header">
+		<div class="mui-container">
+			<h1 class="content-header-title">Tag List</h1>
+		</div>
+	</div>
+	<div class="mui-container">
+		
+        <div class="mui-panel">
+            {% for tag in tags %}
+            <a class="mui-btn mui-btn--raised mui-btn--primary" href="{% url 'tag_id' pk=tag.pk %}">
+                {{ tag }}
+            </a>
+            {% endfor %}
+		</div>
+
+	</div>
+{% endblock content %}
