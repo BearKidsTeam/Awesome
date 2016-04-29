@@ -3,6 +3,7 @@ from django.utils import timezone
 from markdown import markdown
 from bs4 import BeautifulSoup
 
+
 # Create your models here.
 
 
@@ -11,9 +12,9 @@ class Post(models.Model):
 	title = models.CharField(max_length=200)
 	text = models.TextField()
 	created_date = models.DateTimeField(
-			default=timezone.now)
+		default=timezone.now)
 	published_date = models.DateTimeField(
-			blank=True, null=True)
+		blank=True, null=True)
 
 	def add(self):
 		self.published_date = timezone.now()
@@ -28,11 +29,19 @@ class Post(models.Model):
 	def __str__(self):
 		return self.title
 
+
 class Tag(models.Model):
+	TAG_TYPE_CHOICES = (
+		('0', 'Category'),
+		('1', 'Descriptive'),
+	)
 	name = models.CharField(max_length=100)
+	type = models.CharField(max_length=1, choices=TAG_TYPE_CHOICES)
 	desc = models.TextField()
+
 	def __str__(self):
 		return self.name
+
 
 class Application(models.Model):
 	APP_TYPE_CHOICES = (
@@ -41,7 +50,7 @@ class Application(models.Model):
 	)
 	app_type = models.CharField(max_length=1, choices=APP_TYPE_CHOICES)
 	published_date = models.DateTimeField(
-			blank=True, null=True)
+		blank=True, null=True)
 	# Category
 	name = models.CharField(max_length=200)
 	tags = models.ManyToManyField(Tag)
