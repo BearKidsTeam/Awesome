@@ -51,6 +51,25 @@
 			
 			{{ app.desc|safe|linebreaks }}
 		</div>
+		<h1>Reviews</h1>
+		{% if reviews %}
+			<div class="tile-wrap">
+			{% for review in reviews %}
+				<div class="tile">
+					<div class="tile-side pull-left">
+						<div class="avatar avatar-sm avatar-brand">
+							<span class="icon">U</span>
+						</div>
+					</div>
+					<div class="tile-inner">
+						<a class="no-decoration" href="{% url 'thread_detail' pk=review.pk %}"><span>{{ review.title }}</span></a>
+					</div>
+				</div>
+			{% endfor %}
+			</div>
+		{% else %}
+			No review. Create one?
+		{% endif %}
 		
 	</div>
 {% endblock content %}

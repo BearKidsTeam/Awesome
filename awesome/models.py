@@ -4,12 +4,10 @@ from markdown import markdown
 from bs4 import BeautifulSoup
 
 
-# Create your models here.
-
-
 class Post(models.Model):
 	author = models.ForeignKey('auth.User')
 	title = models.CharField(max_length=200)
+	assoc = models.ForeignKey('Application', null=True, blank=True, default = None)
 	text = models.TextField()
 	created_date = models.DateTimeField(
 		default=timezone.now)
@@ -34,6 +32,7 @@ class Tag(models.Model):
 	TAG_TYPE_CHOICES = (
 		('0', 'Category'),
 		('1', 'Descriptive'),
+		('2', 'Platform'),
 	)
 	name = models.CharField(max_length=100)
 	type = models.CharField(max_length=1, choices=TAG_TYPE_CHOICES)

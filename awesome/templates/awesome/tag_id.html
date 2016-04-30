@@ -17,7 +17,7 @@
 				<div class="mui--text-dark-hint">
 					Tags: 
 					{% for tag in app.tags.all %}
-						#{{ tag }}
+						<a href="{% url 'tag_id' pk=tag.pk %}"> #{{ tag }} </a>
 						{% if not forloop.last %},{% endif %}
 					{% endfor %}
 				</div>

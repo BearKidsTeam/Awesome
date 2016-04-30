@@ -1,4 +1,3 @@
-# from django.shortcuts import render
 # from django.utils import timezone
 from django.shortcuts import render, get_object_or_404
 from django.core.urlresolvers import reverse
@@ -8,14 +7,14 @@ from .models import *
 # Create your views here.
 
 def thread_list(request):
-	threads = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-	page = [{'title': 'Awesome', 'url': reverse('home_page')}, {'title': 'Recommands', 'url': reverse('thread_list')}]
+	threads = Post.objects.filter(published_date__lte=timezone.now(), assoc__isnull=True).order_by('-published_date')
+	page = [{'title': 'Awesome', 'url': reverse('home_page')}, {'title': 'Recommends', 'url': reverse('thread_list')}]
 	return render(request, 'awesome/thread_list.html', {'threads': threads, 'page': page})
 
 
 def thread_detail(request, pk):
 	thread = get_object_or_404(Post, pk=pk)
-	page = [{'title': 'Awesome', 'url': reverse('home_page')}, {'title': 'Recommands', 'url': reverse('thread_list')},
+	page = [{'title': 'Awesome', 'url': reverse('home_page')}, {'title': 'Recommends', 'url': reverse('thread_list')},
 			{'title': 'Detail', 'url': '#'}]
 	return render(request, 'awesome/thread_detail.html', {'thread': thread, 'page': page})
 
@@ -28,9 +27,10 @@ def app_list(request):
 
 def app_detail(request, pk):
 	app = get_object_or_404(Application, pk=pk)
+	reviews = Post.objects.filter(assoc__pk = pk).order_by('-published_date')
 	page = [{'title': 'Awesome', 'url': reverse('home_page')}, {'title': 'Applications', 'url': reverse('app_list')},
 			{'title': 'Detail', 'url': '#'}]
-	return render(request, 'awesome/app_detail.html', {'app': app, 'page': page})
+	return render(request, 'awesome/app_detail.html', {'app': app, 'page': page, 'reviews': reviews})
 
 
 def tag_id(request, pk):
