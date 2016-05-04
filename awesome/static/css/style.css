@@ -93,6 +93,14 @@ buttons {
   body.hide-sidedrawer #footer {
     margin-left: 0;
   }
+
+}
+
+@media (max-width: 768px) {
+  .mobile-hidden {
+    display: none;
+  }
+
 }
 
 
@@ -342,6 +350,17 @@ ul.appbar-nav {
     line-height: 40px;
     text-align: center;
     width: 40px;
+}
+
+.preview-img {
+    background-color: rgba(154,154,154,.18);
+    border-radius: .3em;
+    color: inherit;
+    display: block;
+    line-height: 40px;
+    text-align: center;
+    width: 279px;
+    height: 130px;
 }
 
 .avatar-green, .avatar-green:focus, .avatar-green:hover, .avatar-orange, .avatar-orange:focus, .avatar-orange:hover {

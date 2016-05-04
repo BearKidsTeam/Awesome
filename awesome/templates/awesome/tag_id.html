@@ -17,16 +17,30 @@
 		</div>
 
 		{% for app in apps %}
-			<div class="mui-panel">
-				<div class="mui--text-dark-hint">
-					Tags: 
-					{% for tag in app.tags.all %}
-						<a href="{% url 'tag_id' pk=tag.pk %}"> #{{ tag }} </a>
-						{% if not forloop.last %},{% endif %}
-					{% endfor %}
-				</div>
-				<h1><a class="no-decoration" href="{% url 'app_detail' pk=app.pk %}">{{ app.name }}</a></h1>
-				{{ app.desc|linebreaks|truncatechars:"100" }}
+			<div class="tile mui-panel">
+
+                <div class="tile-inner" style="margin: 0px">
+                    <div class="mui--text-dark-hint">
+                        Tags:
+                        {% for tag in app.tags.all %}
+                            <a href="{% url 'tag_id' pk=tag.pk %}"> #{{ tag }} </a>
+                            {% if not forloop.last %},{% endif %}
+                        {% endfor %}
+                    </div>
+                    <h1><a class="no-decoration" href="{% url 'app_detail' pk=app.pk %}">{{ app.name }}</a></h1>
+                    {{ app.desc|linebreaks|truncatechars:"100" }}
+                </div>
+                <div class="tile-side pull-right mobile-hidden">
+                    <div class="preview-img">
+                        <span class="preview-img">
+                            {% if app.steam_appid %}
+                                <img class="preview-img" src="http://cdn.steamstatic.com.8686c.com/steam/apps/{{ app.steam_appid }}/header.jpg">
+                            {% else %}
+                                <span class="icon">No preview available</span>
+                            {% endif %}
+                        </span>
+                    </div>
+                </div>
 			</div>
 		{% endfor %}
 	</div>
