@@ -21,7 +21,7 @@ class Post(models.Model):
 	def html(self):
 		return markdown(self.text)
 
-	def plainText(self):
+	def plain_text(self):
 		return ''.join(BeautifulSoup(self.html(), "html.parser").findAll(text=True))
 
 	def __str__(self):

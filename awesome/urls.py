@@ -9,4 +9,5 @@ urlpatterns = [
 	url(r'^app/(?P<pk>[0-9]+)/$', views.app_detail, name='app_detail'),
 	url(r'^tag/$', views.tag_list, name='tag_list'),
 	url(r'^tag/(?P<pk>[0-9]+)/$', views.tag_id, name='tag_id'),
+	url(r'^tag/query/$', views.tag_query, name='tag_query'),
 ]
