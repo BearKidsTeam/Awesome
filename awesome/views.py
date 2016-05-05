@@ -7,6 +7,15 @@ from .models import *
 
 # Utils func.
 
+# match the items CONTAIN all the gaven ids
+def get_multi_match(model_class, m2m_field, ids):
+	query = model_class.objects.all()
+	for _id in ids:
+		query = query.filter(**{m2m_field: _id})
+	return query
+
+
+# match all items which's ids EXACTLY match the gaven ids list
 def get_exact_match(model_class, m2m_field, ids):
 	query = model_class.objects.annotate(count=Count(m2m_field)).filter(count=len(ids))
 	for _id in ids:
@@ -58,10 +67,8 @@ def tag_list(request):
 
 
 def tag_query(request):
-	search_tags = request.GET.get('tags', [])
-	if not isinstance(search_tags, list):
-		search_tags = [search_tags, ]
+	search_tags = request.GET.getlist('tag')
 	tags = Tag.objects.filter(pk__in=search_tags).order_by('name')
-	apps = get_exact_match(Application, 'tags__pk', search_tags)
+	apps = get_multi_match(Application, 'tags__pk', search_tags)  # FIXME: 'search_tags' should be a list type 'tags'
 	page = [{'title': 'Awesome', 'url': reverse('home_page')}, {'title': 'Tag Filter', 'url': reverse('tag_query')}]
-	return render(request, 'awesome/tag_id.html', {'tag': tags, 'apps': apps, 'page': page})
+	return render(request, 'awesome/tag_query.html', {'tags': tags, 'apps': apps, 'page': page})

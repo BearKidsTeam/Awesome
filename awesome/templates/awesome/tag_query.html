@@ -1,0 +1,55 @@
+{% extends 'awesome/base.html' %}
+
+{% block title %}
+	Application List
+{% endblock %}
+
+{% block content %}
+	<div class="content-header">
+		<div class="mui-container">
+			<h1 class="content-header-title">Applications Contains Those Tags:</h1>
+		</div>
+	</div>
+	<div class="mui-container">
+
+		<div class="mui-panel">
+        {% if tags %}
+			{% for tag in tags %}
+                <a class="mui-btn mui-btn--raised mui-btn--primary" href="{% url 'tag_id' pk=tag.pk %}">
+                    {{ tag }}
+                </a>
+            {% endfor %}
+        {% else %}
+            No tags for filtration. Add some tags to The Awesome Filter?
+        {% endif %}
+		</div>
+
+		{% for app in apps %}
+			<div class="tile mui-panel">
+
+                <div class="tile-inner" style="margin: 0px">
+                    <div class="mui--text-dark-hint">
+                        Tags:
+                        {% for tag in app.tags.all %}
+                            <a href="{% url 'tag_id' pk=tag.pk %}"> #{{ tag }} </a>
+                            {% if not forloop.last %},{% endif %}
+                        {% endfor %}
+                    </div>
+                    <h1><a class="no-decoration" href="{% url 'app_detail' pk=app.pk %}">{{ app.name }}</a></h1>
+                    {{ app.desc|linebreaks|truncatechars:"100" }}
+                </div>
+                <div class="tile-side pull-right mobile-hidden">
+                    <div class="preview-img">
+                        <span class="preview-img">
+                            {% if app.steam_appid %}
+                                <img class="preview-img" src="http://cdn.steamstatic.com.8686c.com/steam/apps/{{ app.steam_appid }}/header.jpg">
+                            {% else %}
+                                <span class="icon">No preview available</span>
+                            {% endif %}
+                        </span>
+                    </div>
+                </div>
+			</div>
+		{% endfor %}
+	</div>
+{% endblock content %}
