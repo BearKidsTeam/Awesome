@@ -387,3 +387,20 @@ ul.appbar-nav {
 .avatar-orange {
     background-color: #ff9800;
 }
+
+/*
+  text css under mui-panel class
+*/
+.mui-panel h1,.mui-panel h2,.mui-panel h3 {
+  color: #3f51b5;
+}
+
+.mui-panel h1 {
+  border-bottom: solid #3f51b5 3px;
+  padding-bottom: 4px;
+}
+
+.mui-panel h2 {
+  padding-left: 10px;
+  border-left: solid #3f51b5 3px;
+}

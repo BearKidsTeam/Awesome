@@ -69,6 +69,7 @@ def tag_list(request):
 def tag_query(request):
 	search_tags = request.GET.getlist('tag')
 	tags = Tag.objects.filter(pk__in=search_tags).order_by('name')
-	apps = get_multi_match(Application, 'tags__pk', search_tags)  # FIXME: 'search_tags' should be a list type 'tags'
+	tags_pk_list = tags.values_list('pk', flat=True)
+	apps = get_multi_match(Application, 'tags__pk', tags_pk_list)
 	page = [{'title': 'Awesome', 'url': reverse('home_page')}, {'title': 'Tag Filter', 'url': reverse('tag_query')}]
 	return render(request, 'awesome/tag_query.html', {'tags': tags, 'apps': apps, 'page': page})
