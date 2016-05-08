@@ -404,3 +404,7 @@ ul.appbar-nav {
   padding-left: 10px;
   border-left: solid #3f51b5 3px;
 }
+
+form select[multiple] {
+    width: 100%;
+}

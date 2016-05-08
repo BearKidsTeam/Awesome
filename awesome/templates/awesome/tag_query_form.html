@@ -1,0 +1,32 @@
+{% extends 'awesome/base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+	Application List
+{% endblock %}
+
+{% block append_media %}
+    <link rel="stylesheet" href="{% static 'chosen/chosen.min.css' %}">
+	<script src="{% static 'chosen/chosen.jquery.min.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+	<div class="content-header">
+		<div class="mui-container">
+			<h1 class="content-header-title">Applications Filter:</h1>
+		</div>
+	</div>
+	<div class="mui-container">
+
+		<div class="mui-panel">
+            <form method="POST" class="post-form">{% csrf_token %}
+                {{ form }}
+                <button type="submit" class="mui-btn mui-btn--raised mui-btn--primary">SEARCH</button>
+            </form>
+		</div>
+
+	</div>
+    <script>
+    $("#id_tag").chosen()
+    </script>
+{% endblock content %}

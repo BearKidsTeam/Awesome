@@ -3,6 +3,7 @@ from django.shortcuts import render, get_object_or_404
 from django.core.urlresolvers import reverse
 from django.db.models import Count
 from .models import *
+from .forms import MultiTagQueryForm
 
 
 # Utils func.
@@ -67,9 +68,13 @@ def tag_list(request):
 
 
 def tag_query(request):
-	search_tags = request.GET.getlist('tag')
-	tags = Tag.objects.filter(pk__in=search_tags).order_by('name')
-	tags_pk_list = tags.values_list('pk', flat=True)
-	apps = get_multi_match(Application, 'tags__pk', tags_pk_list)
 	page = [{'title': 'Awesome', 'url': reverse('home_page')}, {'title': 'Tag Filter', 'url': reverse('tag_query')}]
-	return render(request, 'awesome/tag_query.html', {'tags': tags, 'apps': apps, 'page': page})
+	if request.method == "POST":
+		search_tags = request.POST.getlist('tag')
+		tags = Tag.objects.filter(pk__in=search_tags).order_by('name')
+		tags_pk_list = tags.values_list('pk', flat=True)
+		apps = get_multi_match(Application, 'tags__pk', tags_pk_list)
+		return render(request, 'awesome/tag_query.html', {'tags': tags, 'apps': apps, 'page': page})
+	else:
+		form = MultiTagQueryForm()
+		return render(request, 'awesome/tag_query_form.html', {'form': form, 'page': page})
