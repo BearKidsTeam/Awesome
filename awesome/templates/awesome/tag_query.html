@@ -41,7 +41,9 @@
                 <div class="tile-side pull-right mobile-hidden">
                     <div class="preview-img">
                         <span class="preview-img">
-                            {% if app.steam_appid %}
+                            {% if header_img != None %}
+                                <img class="preview-img" src="{{ app.header_img }}">
+                            {% elif app.steam_appid %}
                                 <img class="preview-img" src="http://cdn.steamstatic.com.8686c.com/steam/apps/{{ app.steam_appid }}/header.jpg">
                             {% else %}
                                 <span class="icon">No preview available</span>

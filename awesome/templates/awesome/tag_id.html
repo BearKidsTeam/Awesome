@@ -27,7 +27,7 @@
                             {% if not forloop.last %},{% endif %}
                         {% endfor %}
                     </div>
-                    <h1><a class="no-decoration" href="{% url 'app_detail' pk=app.pk %}">{{ app.name }}</a></h1>
+                    <h2><a class="no-decoration" href="{% url 'app_detail' pk=app.pk %}">{{ app.name }}</a></h2>
                     {{ app.desc|linebreaks|truncatechars:"100" }}
                 </div>
                 <div class="tile-side pull-right mobile-hidden">

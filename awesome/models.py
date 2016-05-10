@@ -4,11 +4,27 @@ from markdown import markdown
 from bs4 import BeautifulSoup
 
 
+class Tag(models.Model):
+	TAG_TYPE_CHOICES = (
+		('0', 'Category'),
+		('1', 'Descriptive'),
+		('2', 'Platform'),
+	)
+	name = models.CharField(max_length=100)
+	type = models.CharField(max_length=1, choices=TAG_TYPE_CHOICES)
+	desc = models.TextField()
+
+	def __str__(self):
+		return self.name
+
+
 class Post(models.Model):
 	author = models.ForeignKey('auth.User')
 	title = models.CharField(max_length=200)
-	assoc = models.ForeignKey('Application', null=True, blank=True, default = None)
+	assoc = models.ForeignKey('Application', null=True, blank=True, default=None)
 	text = models.TextField()
+	tags = models.ManyToManyField(Tag)
+	header_img = models.CharField(max_length=200, default="")
 	created_date = models.DateTimeField(
 		default=timezone.now)
 	published_date = models.DateTimeField(
@@ -26,20 +42,6 @@ class Post(models.Model):
 
 	def __str__(self):
 		return self.title
-
-
-class Tag(models.Model):
-	TAG_TYPE_CHOICES = (
-		('0', 'Category'),
-		('1', 'Descriptive'),
-		('2', 'Platform'),
-	)
-	name = models.CharField(max_length=100)
-	type = models.CharField(max_length=1, choices=TAG_TYPE_CHOICES)
-	desc = models.TextField()
-
-	def __str__(self):
-		return self.name
 
 
 class Application(models.Model):
