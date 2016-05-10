@@ -55,11 +55,11 @@ class Application(models.Model):
 	# Category
 	name = models.CharField(max_length=200)
 	tags = models.ManyToManyField(Tag)
-	steam_appid = models.IntegerField()
+	steam_appid = models.IntegerField(blank=True, null=True)
 	is_free = models.NullBooleanField()
 	header_img = models.CharField(max_length=200)
 	# header_img_upload = models.ImageField(upload_to='app_header_img', blank=True, null=True)
-	website = models.CharField(max_length=200)
+	website = models.CharField(max_length=200, blank=True,  null=True)
 	desc = models.TextField()
 
 	def __str__(self):
