@@ -1,12 +1,14 @@
+# Awesome
+### A simple and lightweight stuff-sharing web app.
+
+![Travis-CI Build Status](https://travis-ci.org/BearKidsTeam/Awesome.svg)
+
 Notice:
 ---
-_Unfinished code stuff. You can ignore this repo._
-_Unfinished code stuff. You can ignore this repo._
-_Unfinished code stuff. You can ignore this repo._
+_Unfinished code stuff. You can ignore this repo._  
+_Unfinished code stuff. You can ignore this repo._  
+_Unfinished code stuff. You can ignore this repo._  
 
-What is this:
----
-A simple and lightweight stuff-sharing web app.
 
 Why do this:
 ---
