@@ -62,6 +62,17 @@ $(window.document).scroll(function () {
 		$("#header").addClass("header-color");
 	}
 });
+
+// ==========================================================================
+// Scroll Fix
+// ==========================================================================
+
+$('a').click(function () {
+	var target = $(this).attr('href');
+	if (target[0]=="#") {
+		$("html,body").animate({scrollTop:($(target).offset().top-50)}, 261);
+	}
+});
   
 });
 
