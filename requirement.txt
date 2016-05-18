@@ -1,1 +1,1 @@
-django markdown
+django markdown BeautifulSoup
