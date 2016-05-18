@@ -237,6 +237,11 @@ buttons {
 	margin-top: 10px;
 }
 
+.chosen-container {
+	width: auto !important;
+	display: block !important;
+}
+
 ol, ul {
 	margin-bottom: 0;
 	line-height: 1.2;
