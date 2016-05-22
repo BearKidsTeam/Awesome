@@ -13,7 +13,7 @@
 	<div class="mui-container">
 
 		<div class="mui-panel">
-			<p>{{ tag.desc|linebreaks|truncatechars:"100" }}</p>
+			<p>{{ tag.desc|truncatechars:"100"|linebreaks }}</p>
 		</div>
 
         {% include 'awesome/component_app_list.html' %}

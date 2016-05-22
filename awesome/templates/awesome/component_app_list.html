@@ -10,7 +10,7 @@
                 {% endfor %}
             </div>
             <h2><a class="no-decoration" href="{% url 'app_detail' pk=app.pk %}">{{ app.name }}</a></h2>
-            {{ app.desc|linebreaks|truncatechars:"100" }}
+            {{ app.desc|truncatechars:"100"|linebreaks }}
         </div>
         <div class="tile-side pull-right mobile-hidden">
             <div class="preview-img">
