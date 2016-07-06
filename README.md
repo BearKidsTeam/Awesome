@@ -2,6 +2,7 @@
 A simple and lightweight stuff-sharing web app.
 
 [![Build Status](https://travis-ci.org/BearKidsTeam/Awesome.svg?branch=master)](https://travis-ci.org/BearKidsTeam/Awesome)
+[![Code Climate](https://codeclimate.com/github/BearKidsTeam/Awesome/badges/gpa.svg)](https://codeclimate.com/github/BearKidsTeam/Awesome/badges)
 
 Notice:
 ---

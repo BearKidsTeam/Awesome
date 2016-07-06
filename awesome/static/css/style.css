@@ -57,7 +57,7 @@ buttons {
 
 #footer {
   height: 80px;
-  margin-left: 0px;
+  margin-left: 0;
   transition: margin-left 0.2s;
 }
 
@@ -144,7 +144,7 @@ buttons {
 }
 
 #sidedrawer > ul {
-  padding-left: 0px;
+  padding-left: 0;
 }
 
 #sidedrawer > ul > li:first-child {
@@ -162,7 +162,7 @@ buttons {
 }
 
 #sidedrawer strong + ul > li {
-  padding: 6px 0px;
+  padding: 6px 0;
 }
 
 
