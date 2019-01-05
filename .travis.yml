@@ -6,4 +6,4 @@ install:
     - "pip install -r requirements.txt"
     
 script:
-    - "python manage.py test"
+    - "DJANGO_SETTINGS_MODULE=mysite.settings.test python manage.py test"
