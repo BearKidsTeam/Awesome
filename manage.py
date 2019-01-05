@@ -3,7 +3,7 @@ import os
 import sys
 
 if __name__ == "__main__":
-    if env.get('CI'):
+    if os.getenv("CI") is not None:
         os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mysite.settings.test")
     else:
         os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mysite.settings")
