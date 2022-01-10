@@ -1,9 +1,0 @@
-#
-# Use this file with pip-compile
-# To update package to recent version and write to requirements.txt, run:
-#
-#    pip-compile --upgrade
-#
-beautifulsoup4
-django
-markdown

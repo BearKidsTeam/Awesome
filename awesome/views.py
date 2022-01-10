@@ -1,7 +1,6 @@
-# from django.utils import timezone
 from django.shortcuts import render, get_object_or_404
-from django.core.urlresolvers import reverse
-from django.db.models import Count
+from django.urls import reverse
+from django.http import HttpResponse
 from .models import *
 from .forms import MultiTagQueryForm
 

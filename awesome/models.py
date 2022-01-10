@@ -1,8 +1,9 @@
 from django.db import models
 from django.utils import timezone
+from django.utils.html import strip_tags
 from markdown import markdown
-from bs4 import BeautifulSoup
 
+# Create your models here.
 
 class Tag(models.Model):
 	TAG_TYPE_CHOICES = (
@@ -19,9 +20,9 @@ class Tag(models.Model):
 
 
 class Post(models.Model):
-	author = models.ForeignKey('auth.User')
+	author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
 	title = models.CharField(max_length=200)
-	assoc = models.ForeignKey('Application', null=True, blank=True, default=None)
+	assoc = models.ForeignKey('Application', null=True, blank=True, default=None, on_delete=models.CASCADE)
 	text = models.TextField()
 	tags = models.ManyToManyField(Tag)
 	header_img = models.CharField(max_length=200, default="")
@@ -38,7 +39,7 @@ class Post(models.Model):
 		return markdown(self.text)
 
 	def plain_text(self):
-		return ''.join(BeautifulSoup(self.html(), "html.parser").findAll(text=True))
+		return strip_tags(self.html())
 
 	def __str__(self):
 		return self.title
@@ -56,7 +57,7 @@ class Application(models.Model):
 	name = models.CharField(max_length=200)
 	tags = models.ManyToManyField(Tag)
 	steam_appid = models.IntegerField(blank=True, null=True)
-	is_free = models.NullBooleanField()
+	is_free = models.BooleanField(null=True)
 	header_img = models.CharField(max_length=200)
 	# header_img_upload = models.ImageField(upload_to='app_header_img', blank=True, null=True)
 	website = models.CharField(max_length=200, blank=True,  null=True)
