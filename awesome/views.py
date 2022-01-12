@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 from django.http import HttpResponse
@@ -27,8 +28,11 @@ def get_exact_match(model_class, m2m_field, ids):
 
 def thread_list(request):
 	threads = Post.objects.filter(published_date__lte=timezone.now(), assoc__isnull=True).order_by('-published_date')
+	paginator = Paginator(threads, 10)
+	page_number = request.GET.get('page', 1)
+	page_obj = paginator.get_page(page_number)
 	page = [{'title': 'Awesome', 'url': reverse('home_page')}, {'title': 'Recommends', 'url': reverse('thread_list')}]
-	return render(request, 'awesome/thread_list.html', {'threads': threads, 'page': page})
+	return render(request, 'awesome/thread_list.html', {'threads': threads, 'page': page, 'page_obj': page_obj})
 
 
 def thread_detail(request, pk):
@@ -40,8 +44,11 @@ def thread_detail(request, pk):
 
 def app_list(request):
 	apps = Application.objects.filter().order_by('name')
+	paginator = Paginator(apps, 10)
+	page_number = request.GET.get('page', 1)
+	page_obj = paginator.get_page(page_number)
 	page = [{'title': 'Awesome', 'url': reverse('home_page')}, {'title': 'Applications', 'url': reverse('app_list')}]
-	return render(request, 'awesome/app_list.html', {'apps': apps, 'page': page})
+	return render(request, 'awesome/app_list.html', {'apps': apps, 'page': page, 'page_obj': page_obj})
 
 
 def app_detail(request, pk):

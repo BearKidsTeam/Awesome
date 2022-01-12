@@ -1,4 +1,4 @@
-{% for app in apps %}
+{% for app in page_obj %}
     <div class="tile mui-panel">
 
         <div class="tile-inner" style="margin: 0px">
@@ -16,7 +16,7 @@
             <div class="preview-img">
                 <span class="preview-img">
                     {% if app.steam_appid %}
-                        <img class="preview-img" src="http://cdn.steamstatic.com.8686c.com/steam/apps/{{ app.steam_appid }}/header.jpg">
+                        <img class="preview-img" src="https://cdn.cloudflare.steamstatic.com/steam/apps/{{ app.steam_appid }}/header.jpg">
                     {% elif app.header_img != None %}
                         <img class="preview-img" src="{{ app.header_img }}">
                     {% else %}

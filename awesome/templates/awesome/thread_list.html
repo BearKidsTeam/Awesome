@@ -11,12 +11,12 @@
 		</div>
 	</div>
 	<div class="mui-container">
-		
-		{% for thread in threads %}
+		{% for thread in page_obj %}
 			<div class="mui-panel">
 				<h1><a class="no-decoration" href="{% url 'thread_detail' pk=thread.pk %}">{{ thread.title }}</a></h1>
 				{{ thread.plain_text|truncatechars:"100"|linebreaks }}
 			</div>
 		{% endfor %}
+		{% include 'awesome/pagination.html' %}
 	</div>
 {% endblock content %}

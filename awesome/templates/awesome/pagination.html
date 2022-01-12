@@ -1,0 +1,17 @@
+<div class="pagination mui--text-center">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1" class="mui-btn mui-btn--small mui-btn--primary mui-btn--flat">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}" class="mui-btn mui-btn--small mui-btn--primary mui-btn--flat">previous</a>
+        {% endif %}
+
+        <span class="current">
+            {{ page_obj.number }} / {{ page_obj.paginator.num_pages }}
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}" class="mui-btn mui-btn--small mui-btn--primary mui-btn--flat">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}" class="mui-btn mui-btn--small mui-btn--primary mui-btn--flat">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
